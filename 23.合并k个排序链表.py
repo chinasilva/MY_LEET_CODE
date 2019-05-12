@@ -32,3 +32,38 @@
 
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        lst=[]
+        Node=Head=ListNode(None)
+        for eachLstNode in lists:
+            while eachLstNode :
+                lst.append(eachLstNode.val)
+                eachLstNode=eachLstNode.next
+        newLst=sorted(lst)
+        for i in newLst:
+            Head.next=ListNode(i)
+            Head=Head.next
+        return Node.next
+                
+# if __name__ == "__main__":    
+#     L1 = None
+#     L1 = ListNode(1)
+#     L2 = ListNode(4)
+#     L3 = ListNode(5)
+#     L1.next = L2
+#     L2.next = L3
+
+#     L4 = None
+#     L4 = ListNode(1)
+#     L5 = ListNode(3)
+#     L6 = ListNode(4)
+#     L4.next = L5
+#     L5.next = L6
+    
+#     L7 = None
+#     L7 = ListNode(2)
+#     L8 = ListNode(6)
+#     L7.next = L8
+#     lst=[L1,L4,L7]
+
+#     S = Solution()
+#     S.mergeKLists(lst)
