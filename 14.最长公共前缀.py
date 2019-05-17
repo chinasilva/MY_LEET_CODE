@@ -41,28 +41,30 @@ class Solution:
         minLen = 2**31
         if strsLen == 0:
             return ""
-        if strsLen == 1: 
+        elif strsLen == 1:
             return strs[0]
-        # 求出最小字符串长度
+        # 求出最小字符串长度,i+1为后一位，故循环至:strsLen-1
         for i in range(strsLen-1):
-            minLen = min(min(len(strs[i]),minLen),len(strs[i+1]))
-        # if len(str(minLen))==0:
-        #     return ""
+            minLen = min(minLen,min(len(strs[i]), len(strs[i+1]))) 
+
         # 双重循环,
         for i in range(strsLen-1):
             for j in range(minLen):
                 if strs[i][j] != strs[i+1][j]:
-                    minLen = j-1
+                    minLen = j #-1
                     break
         if minLen > 0:
-            return strs[0][0:minLen+1]
+            return strs[0][0:minLen]
         else:
             return ""
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.longestCommonPrefix(["caa","","a","acb"]))
-    print(s.longestCommonPrefix(["aa","ab"]))
-    # print(s.longestCommonPrefix(["flower","flow","flight"]))
-    
+    # print(s.longestCommonPrefix( ["flower","flow","flight"]))
+    # print(s.longestCommonPrefix( ["aa","ab"]))
+    # print(s.longestCommonPrefix( ["a",""]))
+    # print(s.longestCommonPrefix( []))
+    # print(s.longestCommonPrefix( ["a"]))
+    print(s.longestCommonPrefix( ["caa","","a","acb"]))
+    # ["caa","","a","acb"]
