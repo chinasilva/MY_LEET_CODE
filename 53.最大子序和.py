@@ -26,6 +26,32 @@
 # 
 #
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        
+    def maxSubArray(self, nums) -> int:
+        # #动态规划方法，不断去更新最大值
+        # sumNum=0
+        # maxNum=0
+        # lstLen=len(nums)
+        # for i in range(lstLen):
+        #     sumNum+=nums[i]
+        #     if sumNum>maxNum:
+        #         maxNum=sumNum
+        #     elif sumNum<0: # 和小于0则当成0看，选择下一个进行求和
+        #         sumNum=0
+        # if maxNum==0: #对于全负的进行最值选取
+        #     maxNum=max(nums)
+        # return maxNum
+
+        curSum = maxSum = nums[0]
+        for num in nums[1:]:
+            curSum = max(num, curSum + num) #选取当前值和当前所有前向最大值
+            maxSum = max(maxSum, curSum)
+
+        return maxSum
+
+if __name__ == "__main__":
+    s = Solution()
+    lst= [-2,-3]
+    #lst= [-2,1,-3,4,-1,2,1,-5,4]
+    #  ,[1,2,3]
+    print(s.maxSubArray(lst))
 
