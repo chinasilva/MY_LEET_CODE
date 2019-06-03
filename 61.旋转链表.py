@@ -52,12 +52,12 @@ class Solution:
         else: #组成环
             Lst.next=head
         # Lst=head
-        #确定首位元素
-        # firstNode=(abs(LstLength-k)+1) if (LstLength-k)<0 else (LstLength-k)
-        firstNode=k%LstLength
-        for i in range(firstNode):
-            Lst=Lst.next
+        #确定首位元素移动步长,反向求值故使用减法
+        firstStep=LstLength-k%LstLength
+        #指针指向首位元素
         Lst=Lst.next
+        for i in range(firstStep):
+            Lst=Lst.next
         #拆除环
         head=Lst
         for i in range(LstLength-1):
@@ -72,20 +72,17 @@ if __name__ == "__main__":
    L1 = ListNode(1)
    L2 = ListNode(4)
    L3 = ListNode(5)
+   L4 = ListNode(4)
+   L5 = ListNode(5)
    L1.next = L2
    L2.next = L3
+   L3.next = L4
+   L4.next = L5
+
 
    S = Solution()
-   L3 = S.rotateRight(L1, 4)
+   L3 = S.rotateRight(L1, 2)
    while L3:
        print(L3.val)
        L3=L3.next
-
-
-# × 44/231 cases passed (N/A)
-#   × testcase: '[1,2,3,4,5]\n2'
-#   × answer: [3,4,5,1,2]
-#   × expected_answer: [4,5,1,2,3]
-#   × stdout: 4
-# 5
 
