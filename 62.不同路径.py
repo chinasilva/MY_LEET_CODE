@@ -40,7 +40,10 @@
 # 输出: 28
 # 
 #
+import math
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        
+        # 使用排列组合方式，假设为（4，7）,向右肯定走6步，向下肯定走3步即：C(3/9)
+        #   约分可得如下阶乘方式
+        return int(math.factorial(m + n - 2) / math.factorial(m -1) / math.factorial(n-1)) 
 
