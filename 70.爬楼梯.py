@@ -39,7 +39,7 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         """
-        动态规划方法
+        动态规划方法,使用字典记录
         :type n: int
         :rtype: int
         """
@@ -49,4 +49,17 @@ class Solution:
             climb[i] = climb[i - 1] + climb[i- 2]
 
         return climb[n]
+        # 递归方式，效率太低        
+        # if n>2:
+        #     return self.climbStairs(n-2)+self.climbStairs(n-1)
+        # elif n==1:
+        #     return 1
+        # elif n==2:
+        #     return 2
 
+if __name__ == "__main__":
+    s = Solution()
+    # lst= [[1, 2, 3, 4], [5, 6, 7, 8], [9,10,11,12]]
+    #lst= [-2,1,-3,4,-1,2,1,-5,4]
+    #  ,[1,2,3]
+    print(s.climbStairs(28))

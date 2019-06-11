@@ -30,14 +30,32 @@
 # 
 #
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        return 1 + max(map(self.maxDepth, (root.left, root.right))) if root else 0
+        '''
+        递归获取
+        '''
+        if not root:
+            return 0
+        else :
+            return 1+max(self.maxDepth(root.left),self.maxDepth(root.right))
+            # return 1 + max(map(self.maxDepth, (root.left, root.right))) if root else 0
 
+if __name__ == "__main__":
+   # 定义树
+   l1 = TreeNode(-10)
+   l1.left = l11 = TreeNode(9)
+   l1.right = l12 = TreeNode(20)
+   l12.left=l13=TreeNode(15)
+   l12.right=l14=TreeNode(7)
+   S = Solution()
+   res = S.maxDepth(l1)
+   print(res)
+  
 
